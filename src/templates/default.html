@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
         <style>
-            html, body { margin:0; padding:0; font-family: 'Open Sans', sans-serif;height:100%;}
+            html, body { margin:0; padding:0; font-family: 'Open Sans', sans-serif;height:100%;box-sizing: border-box;}
             .right {float:right;}
             .left {float:left;}
             .nav { background-color:#333; }
@@ -19,19 +19,20 @@
             ul.project { margin:0; }
             ul.project li { line-height:1.8em; list-style-type:none;padding:5px 0px;}
             ul.project li a { color:#fff;text-decoration:none;font-size:1.2em;font-weight:300; }
-            .wrap { width:100%; margin:0 auto;}
+            .wrap { width:100%; margin:0 auto;padding:0 10%;box-sizing: border-box;}
             .page-wrap {min-height:80%; margin:-6em 0;}
             .page-wrap:after {content: "";display: block; height:6em;}
             .main {padding:10%;text-align:center;}
             blockquote {text-align:left; border-left:3px solid #ddd;padding:1.2em 2.4em;width:60%;display:inline-block;background-color:#efefef;margin:4em 0;}
             blockquote p { font-size:1.6em;}
             .title {margin-bottom:16px;display:block; text-align:right;color:#aaa;font-size:1em; font-style: italic;}
-            footer {padding:1em 1em 3em 1em;height:6em;position:absolute;bottom:0;width:100%;}
+            footer {padding:0 10%;min-height:8em;position:absolute;bottom:0;width:100%;box-sizing: border-box;}
             footer a {color:#333;background-color:#eee;border-bottom:1px solid #ccc; padding:2px 5px;text-decoration:none;}
             footer a:hover {border-bottom:1px solid #333;}
             ul.footerTitle { margin:0; padding:0;}
+            ul.footerTitle.right {text-align:right;}
             ul.footerTitle li { line-height:1.8em; list-style-type:none;padding:5px 0px;color:#000;text-decoration:none;font-size:0.8em; font-weight:400;}
-            footer .wrap {border-top:1px solid #ccc;padding:20px 0px;}
+            footer .wrap {border-top:1px solid #ccc;padding:1em 0;}
         </style>
         {% if env == 'prod' %}
             {% include "analytics.html" %}
@@ -63,11 +64,11 @@
             <div class="wrap">
                 <ul class="footerTitle left">
                     <li>&copy; {{ "now"|date("Y") }} <a href="http://davidstanley.org">David Stanley</a>.</li>
+                    <li>Inspired by <a href="http://whatthecommit.com">WhatTheCommit</a>.</li>
                 </ul>
                 <ul class="footerTitle right">
                     <li>Made with <a href="http://www.slimframework.com/">Slim</a>, caffeine, and a touch of bitterness. <a href="https://github.com/davidstanley01/MovieCommit">Fork it on Github.</a> </li>
                     <li>Special thanks to <a href="https://twitter.com/dilbert4life">Don Gilbert</a> for quotes and validation.</li>
-                    <li>Inspired by <a href="http://whatthecommit.com">WhatTheCommit</a>.</li>
                 </ul>
             </div>
         </footer>
