@@ -12,22 +12,24 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
         <style>
             html, body { margin:0; padding:0; font-family: 'Open Sans', sans-serif;height:100%;}
+            .right {float:right;}
+            .left {float:left;}
             .nav { background-color:#333; }
             ul.project { margin:0; }
             ul.project li { line-height:1.8em; list-style-type:none;padding:5px 0px;}
             ul.project li a { color:#fff;text-decoration:none;font-size:1.2em;font-weight:400; }
             .wrap { width:940px; margin:0 auto;}
-            .page-wrap {min-height:100%; margin:-80px 0;}
+            .page-wrap {min-height:100%; margin:-90px 0;}
             .page-wrap:after {content: "";display: block;}
             .main {padding:60px;text-align:center;}
             blockquote {text-align:left; border-left:3px solid #ddd;padding:20px 40px;width:400px;display:inline-block;background-color:#efefef;margin-top:100px;}
             blockquote p { font-size:1.6em;}
             .title {margin-bottom:16px;display:block; text-align:right;color:#aaa;font-size:1em; font-style: italic;}
-            footer, .page-wrap:after {height:80px;}
+            footer, .page-wrap:after {height:90px;}
             footer a {color:#333;background-color:#eee;border-bottom:1px solid #ccc; padding:2px 5px;text-decoration:none;}
             footer a:hover {border-bottom:1px solid #333;}
-            ul.footerTitle { margin:0; }
-            ul.footerTitle li { line-height:1.8em; list-style-type:none;padding:5px 0px;color:#000;text-decoration:none;font-size:1em; font-weight:300;}
+            ul.footerTitle { margin:0; padding:0;}
+            ul.footerTitle li { line-height:1.8em; list-style-type:none;padding:5px 0px;color:#000;text-decoration:none;font-size:0.8em; font-weight:400;}
             footer .wrap {border-top:1px solid #ccc;padding:20px 0px;}
         </style>
         {% if env == 'prod' %}
@@ -38,7 +40,7 @@
         <div class="nav">
             <div class="wrap">
                 <ul class="project">
-                    <li><a href="/">Movie Commit</a></li>
+                    <li><a href="/">MovieCommit</a></li>
                 </ul>
             </div>
         </div>
@@ -54,8 +56,13 @@
         </div>
         <footer>
             <div class="wrap">
-                <ul class="footerTitle">
-                    <li>&copy; {{ "now"|date("Y") }} <a href="http://davidstanley.org">David Stanley</a>.  Made with <a href="http://www.slimframework.com/">Slim</a>, caffeine, and a touch of bitterness. <a href="https://github.com/davidstanley01/MovieCommit">Fork it on Github</a></li>
+                <ul class="footerTitle left">
+                    <li>&copy; {{ "now"|date("Y") }} <a href="http://davidstanley.org">David Stanley</a>.</li>
+                </ul>
+                <ul class="footerTitle right">
+                    <li>Made with <a href="http://www.slimframework.com/">Slim</a>, caffeine, and a touch of bitterness. <a href="https://github.com/davidstanley01/MovieCommit">Fork it on Github.</a> </li>
+                    <li>Special thanks to <a href="https://twitter.com/dilbert4life">Don Gilbert</a> for quotes and validation.</li>
+                    <li>Inspired by <a href="http://whatthecommit.com">WhatTheCommit</a>.</li>
                 </ul>
             </div>
         </footer>
