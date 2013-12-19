@@ -1,0 +1,23 @@
+{
+    "name": "Movie Commits",
+    "description": "Delivers one-liners for commit messages from movies.",
+    "keywords": ["slim", "movies"],
+    "license": "MIT",
+    "require": {
+        "slim/slim": "2.*",
+        "slim/views": "0.*",
+        "twig/twig": "1.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/MovieCommit"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "dev"
+}
