@@ -55,6 +55,11 @@ class MovieCommit
         // supressing the errors is stupid, but I'm tired
         $lines = @file($filename, FILE_IGNORE_NEW_LINES);
 
+        // The first line of the file is the movie title.  Grab it and get rid of it.
+        $title = $lines[0];
+        unset($lines[0]);
+        $lines = array_values($lines);
+
         if ($lines) {
             // get the line we want. Subtract 1 to account for zero index
             $line = (count($lines) == 1) ? 0 : rand(1, count($lines)) - 1;
@@ -62,7 +67,7 @@ class MovieCommit
             // return the obvious
             return array(
                 "line"  => $lines[$line],
-                "title" => $movieName
+                "title" => $title
             );
 
         } else {

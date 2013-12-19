@@ -6,8 +6,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{{ env }}</title>
-        <meta name="description" content="">
+        <title>MovieCommit | Get a movie quote as a commit message</title>
+        <meta name="description" content="{{ env }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
         <style>
@@ -24,10 +24,15 @@
             blockquote p { font-size:1.6em;}
             .title {margin-bottom:16px;display:block; text-align:right;color:#aaa;font-size:1em; font-style: italic;}
             footer, .page-wrap:after {height:80px;}
+            footer a {color:#333;background-color:#eee;border-bottom:1px solid #ccc; padding:2px 5px;text-decoration:none;}
+            footer a:hover {border-bottom:1px solid #333;}
             ul.footerTitle { margin:0; }
             ul.footerTitle li { line-height:1.8em; list-style-type:none;padding:5px 0px;color:#000;text-decoration:none;font-size:1em; font-weight:300;}
             footer .wrap {border-top:1px solid #ccc;padding:20px 0px;}
         </style>
+        {% if env == 'prod' %}
+            {% include "analytics.html" %}
+        {% endif %}
     </head>
     <body>
         <div class="nav">
@@ -50,7 +55,7 @@
         <footer>
             <div class="wrap">
                 <ul class="footerTitle">
-                    <li>&copy; {{ "now"|date("Y") }} David Stanley.  Made with <a href="http://www.slimframework.com/">Slim</a>, caffeine, and a touch of bitterness.</li>
+                    <li>&copy; {{ "now"|date("Y") }} <a href="http://davidstanley.org">David Stanley</a>.  Made with <a href="http://www.slimframework.com/">Slim</a>, caffeine, and a touch of bitterness.</li>
                 </ul>
             </div>
         </footer>
