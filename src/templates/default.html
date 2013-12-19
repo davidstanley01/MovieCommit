@@ -15,9 +15,10 @@
             .right {float:right;}
             .left {float:left;}
             .nav { background-color:#333; }
+            .clear {clear:both;display:block;}
             ul.project { margin:0; }
             ul.project li { line-height:1.8em; list-style-type:none;padding:5px 0px;}
-            ul.project li a { color:#fff;text-decoration:none;font-size:1.2em;font-weight:400; }
+            ul.project li a { color:#fff;text-decoration:none;font-size:1.2em;font-weight:300; }
             .wrap { width:940px; margin:0 auto;}
             .page-wrap {min-height:100%; margin:-90px 0;}
             .page-wrap:after {content: "";display: block;}
@@ -39,9 +40,13 @@
     <body>
         <div class="nav">
             <div class="wrap">
-                <ul class="project">
+                <ul class="project left">
                     <li><a href="/">MovieCommit</a></li>
                 </ul>
+                <ul class="project right">
+                    <li><a href="/clean">Just the text...</a></li>
+                </ul>
+                <div class="clear"></div>
             </div>
         </div>
         <div class="page-wrap">
