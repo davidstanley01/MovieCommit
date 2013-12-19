@@ -62,7 +62,7 @@ class MovieCommit
             // return the obvious
             return array(
                 "line"  => $lines[$line],
-                "title" => $movie
+                "title" => $movieName
             );
 
         } else {
