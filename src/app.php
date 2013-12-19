@@ -30,12 +30,13 @@ $app->view->parserExtensions = array(new TwigExtension());
 $app->get('/', function() use ($app, $env) {
 
     // get the line
-    $line = $app->data->line;
+    $quote = $app->data->line;
     $app->render(
         'default.html',
         array(
-            'env' => $env,
-            'line' => $line
+            'env'   => $env,
+            'line'  => $quote['line'],
+            'title' => $quote['title']
         )
     );
 
@@ -43,5 +44,7 @@ $app->get('/', function() use ($app, $env) {
 
 // just the facts, ma'am
 $app->get('/clean', function() use ($app) {
-    echo $app->data->line;
+    $quote = $app->data->line;
+
+    echo $quote['line'] .' - '. $quote['title'];
 });

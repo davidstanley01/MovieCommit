@@ -33,7 +33,6 @@ class MovieCommit
     public function __construct(array $movies)
     {
         $this->movies = $movies;
-        $this->movieCount = count($movies); // count 'em up
         $this->path = __DIR__ .'/data/';    // set the file path - feels durty
         $this->line = $this->getLine();     // make the line available
     }
@@ -45,7 +44,7 @@ class MovieCommit
     protected function getLine()
     {
         // Get the movie we want. Subtract 1 to account for zero index
-        $movie = ($this->movieCount == 1) ? 0 : rand(1, $this->movieCount) - 1;
+        $movie = (count($this->movies) == 1) ? 0 : rand(1, count($this->movies)) - 1;
 
         // What is our movie?
         $movieName = $this->movies[$movie];
@@ -61,10 +60,18 @@ class MovieCommit
             $line = (count($lines) == 1) ? 0 : rand(1, count($lines)) - 1;
 
             // return the obvious
-            return $lines[$line] .' - '. $movieName;
+            return array(
+                "line"  => $lines[$line],
+                "title" => $movie
+            );
 
         } else {
-            return "Dave's not here, man.";
+
+            // something.  anything
+            return array(
+                "line"  => "Dave's not here, man.",
+                "title" => "The Big Lebowski"
+            );
         }
     }
 }
