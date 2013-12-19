@@ -9,14 +9,50 @@
         <title>{{ env }}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+        <style>
+            html, body { margin:0; padding:0; font-family: 'Open Sans', sans-serif;height:100%;}
+            .nav { background-color:#333; }
+            ul.project { margin:0; }
+            ul.project li { line-height:1.8em; list-style-type:none;padding:5px 0px;}
+            ul.project li a { color:#fff;text-decoration:none;font-size:1.2em;font-weight:400; }
+            .wrap { width:940px; margin:0 auto;}
+            .page-wrap {min-height:100%; margin:-80px 0;}
+            .page-wrap:after {content: "";display: block;}
+            .main {padding:60px;text-align:center;}
+            blockquote {text-align:left; border-left:3px solid #ddd;padding:20px 40px;width:400px;display:inline-block;background-color:#efefef;margin-top:100px;}
+            blockquote p { font-size:1.6em;}
+            .title {margin-bottom:16px;display:block; text-align:right;color:#aaa;font-size:1em; font-style: italic;}
+            footer, .page-wrap:after {height:80px;}
+            ul.footerTitle { margin:0; }
+            ul.footerTitle li { line-height:1.8em; list-style-type:none;padding:5px 0px;color:#000;text-decoration:none;font-size:1em; font-weight:300;}
+            footer .wrap {border-top:1px solid #ccc;padding:20px 0px;}
+        </style>
     </head>
     <body>
-        <div class="wrap">
-            <blockquote>
-                <p>{{ line }}</p>
-                <span class="title">{{ title }}</span>
-            </blockquote>
+        <div class="nav">
+            <div class="wrap">
+                <ul class="project">
+                    <li><a href="/">Movie Commit</a></li>
+                </ul>
+            </div>
         </div>
+        <div class="page-wrap">
+            <div class="wrap">
+                <div class="main">
+                    <blockquote>
+                        <p>{{ line }}</p>
+                        <span class="title">&mdash; {{ title }}</span>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="wrap">
+                <ul class="footerTitle">
+                    <li>&copy; {{ "now"|date("Y") }} David Stanley.  Made with <a href="http://www.slimframework.com/">Slim</a>, caffeine, and a touch of bitterness.</li>
+                </ul>
+            </div>
+        </footer>
     </body>
 </html>
