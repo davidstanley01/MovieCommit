@@ -14,7 +14,8 @@ return array(
 
     // Movies and lines
     'movies' => array(
-        'HolyGrail'
+        'HolyGrail',
+        'Cars'
     ),
 
 );
