@@ -67,7 +67,8 @@ class MovieCommit
             // return the obvious
             return array(
                 "line"  => $lines[$line],
-                "title" => $title
+                "title" => $title,
+                "permalink" => base64_encode(json_encode(array($movie, $line)))
             );
 
         } else {
@@ -75,7 +76,51 @@ class MovieCommit
             // something.  anything
             return array(
                 "line"  => "Dave's not here, man.",
-                "title" => "The Big Lebowski"
+                "title" => "The Big Lebowski",
+                "permalink" => null
+            );
+        }
+    }
+
+    /**
+     * Get a specific line
+     * @param  string $id The id of the quote to retrieve
+     * @return string The movie line
+     */
+    public function getSpecificLine($id)
+    {
+        list($movie, $line) = json_decode(base64_decode($id), true);
+
+        // What is our movie?
+        $movieName = $this->movies[$movie];
+
+        // Get the file and read it into an array
+        $filename = $this->path . "$movieName.txt";
+
+        // supressing the errors is stupid, but I'm tired
+        $lines = @file($filename, FILE_IGNORE_NEW_LINES);
+
+        // The first line of the file is the movie title.  Grab it and get rid of it.
+        $title = $lines[0];
+        unset($lines[0]);
+        $lines = array_values($lines);
+
+        if ($lines) {
+
+            // return the obvious
+            return array(
+                "line"  => $lines[$line],
+                "title" => $title,
+                "permalink" => base64_encode(json_encode(array($movie, $line)))
+            );
+
+        } else {
+
+            // something.  anything
+            return array(
+                "line"  => "Dave's not here, man.",
+                "title" => "The Big Lebowski",
+                "permalink" => null
             );
         }
     }
