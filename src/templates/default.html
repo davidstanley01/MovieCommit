@@ -21,15 +21,14 @@
             ul.project li a { color:#fff;text-decoration:none;font-size:1em;font-weight:300; }
             .wrap { width:100%; margin:0 auto;padding:0 10%;box-sizing: border-box;}
             .page-wrap {min-height:80%;}
-            .page-wrap:after {content: "";display: block; height:6em;}
-            .main {margin-top:10%;text-align:center;}
+            .main {margin:10% 0;text-align:center;}
             blockquote {text-align:left; border-left:3px solid #ddd;padding:1.2em 2.4em;width:60%;display:inline-block;background-color:#efefef;margin:0;max-width:400px;}
             blockquote p { font-size:1.6em;}
             .title {margin-bottom:16px;display:block; text-align:right;color:#aaa;font-size:1em; font-style: italic;}
             .fixed-bottom {position:absolute;bottom:0;}
             footer {min-height:8em;width:100%;box-sizing: border-box;}
-            footer a {color:#333;background-color:#eee;border-bottom:1px solid #ccc; padding:2px 5px;text-decoration:none;}
-            footer a:hover {border-bottom:1px solid #333;}
+            a.highlight {color:#333;background-color:#eee;border-bottom:1px solid #ccc; padding:2px 5px;text-decoration:none;}
+            a.highlight:hover {border-bottom:1px solid #333;}
             ul.footerTitle { margin:0; padding:0;}
             ul.footerTitle li { line-height:1.8em; list-style-type:none;padding:5px 0px;color:#000;text-decoration:none;font-size:50%; font-weight:400;text-align:center;}
             footer .wrap {border-top:1px solid #ccc;padding:1em 0;}
@@ -63,10 +62,10 @@
         <footer id="footer">
             <div class="wrap">
                 <ul class="footerTitle">
-                    <li>Made with <a href="http://www.slimframework.com/">Slim</a>, caffeine, and a touch of bitterness. <a href="https://github.com/davidstanley01/MovieCommit">Fork it on Github</a></li>
-                    <li>Special thanks to <a href="https://twitter.com/dilbert4life">Don Gilbert</a> for quotes and validation</li>
-                    <li>Inspired by <a href="http://whatthecommit.com">WhatTheCommit</a></li>
-                    <li>&copy; {{ "now"|date("Y") }} <a href="http://davidstanley.org">David Stanley</a></li>
+                    <li>Made with <a href="http://www.slimframework.com/" class="highlight">Slim</a>, caffeine, and a touch of bitterness. <a href="https://github.com/davidstanley01/MovieCommit" class="highlight">Fork it on Github</a></li>
+                    <li>Special thanks to <a href="https://twitter.com/dilbert4life" class="highlight">Don Gilbert</a> for quotes and validation</li>
+                    <li>Inspired by <a href="http://whatthecommit.com" class="highlight">WhatTheCommit</a></li>
+                    <li>&copy; {{ "now"|date("Y") }} <a href="http://davidstanley.org" class="highlight">David Stanley</a></li>
                 </ul>
             </div>
         </footer>
@@ -80,7 +79,7 @@
                 y = w.innerHeight|| e.clientHeight|| g.clientHeight;
 
             // if we are on something bigger than a phone...
-            if (y > 420) {
+            if (y > 500) {
                 var i = document.getElementById('footer');
                 var j = document.getElementById('quote');
 
