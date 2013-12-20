@@ -11,26 +11,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
         <style>
-            html, body { margin:0; padding:0; font-family: 'Open Sans', sans-serif;height:100%;box-sizing: border-box;}
+            html, body { margin:0; padding:0; font-family: 'Open Sans', sans-serif;box-sizing: border-box;}
             .right {float:right;}
             .left {float:left;}
             .nav { background-color:#333; }
             .clear {clear:both;display:block;}
-            ul.project { margin:0; }
-            ul.project li { line-height:1.8em; list-style-type:none;padding:5px 0px;}
-            ul.project li a { color:#fff;text-decoration:none;font-size:1.2em;font-weight:300; }
+            ul.project { margin:0;padding:0; }
+            ul.project li { line-height:2.4em; list-style-type:none;padding:5px 0px;}
+            ul.project li a { color:#fff;text-decoration:none;font-size:1em;font-weight:300; }
             .wrap { width:100%; margin:0 auto;padding:0 10%;box-sizing: border-box;}
-            .page-wrap {min-height:80%; margin:-6em 0;}
+            .page-wrap {min-height:80%;}
             .page-wrap:after {content: "";display: block; height:6em;}
-            .main {padding:10%;text-align:center;}
-            blockquote {text-align:left; border-left:3px solid #ddd;padding:1.2em 2.4em;width:60%;display:inline-block;background-color:#efefef;margin:4em 0;}
+            .main {margin-top:1em;text-align:center;}
+            blockquote {text-align:left; border-left:3px solid #ddd;padding:1.2em 2.4em;width:60%;display:inline-block;background-color:#efefef;margin:0;max-width:400px;}
             blockquote p { font-size:1.6em;}
             .title {margin-bottom:16px;display:block; text-align:right;color:#aaa;font-size:1em; font-style: italic;}
-            footer {padding:0 10%;min-height:8em;position:absolute;bottom:0;width:100%;box-sizing: border-box;}
+            .fixed-bottom {position:absolute;bottom:0;}
+            footer {min-height:8em;width:100%;box-sizing: border-box;}
             footer a {color:#333;background-color:#eee;border-bottom:1px solid #ccc; padding:2px 5px;text-decoration:none;}
             footer a:hover {border-bottom:1px solid #333;}
             ul.footerTitle { margin:0; padding:0;}
-            ul.footerTitle li { line-height:1.8em; list-style-type:none;padding:5px 0px;color:#000;text-decoration:none;font-size:0.8em; font-weight:400;text-align:center;}
+            ul.footerTitle li { line-height:1.8em; list-style-type:none;padding:5px 0px;color:#000;text-decoration:none;font-size:50%; font-weight:400;text-align:center;}
             footer .wrap {border-top:1px solid #ccc;padding:1em 0;}
         </style>
         {% if env == 'prod' %}
@@ -52,14 +53,14 @@
         <div class="page-wrap">
             <div class="wrap">
                 <div class="main">
-                    <blockquote>
+                    <blockquote id="quote">
                         <p>{{ line }}</p>
                         <span class="title">&mdash; {{ title }}</span>
                     </blockquote>
                 </div>
             </div>
         </div>
-        <footer>
+        <footer id="footer" class="footer">
             <div class="wrap">
                 <ul class="footerTitle">
                     <li>Made with <a href="http://www.slimframework.com/">Slim</a>, caffeine, and a touch of bitterness. <a href="https://github.com/davidstanley01/MovieCommit">Fork it on Github</a></li>
@@ -69,5 +70,20 @@
                 </ul>
             </div>
         </footer>
+        <script type="text/javascript">
+            var w = window,
+                d = document,
+                e = d.documentElement,
+                g = d.getElementsByTagName('body')[0],
+                x = w.innerWidth || e.clientWidth || g.clientWidth,
+                y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+            if (y > 420) {
+                var i = document.getElementById('footer');
+                var j = document.getElementById('quote');
+                if (j.clientHeight < y) {
+                    i.className = i.className + " fixed-bottom";
+                }
+            }
+        </script>
     </body>
 </html>
