@@ -3,7 +3,7 @@ vendor/
 composer.lock
 src/templates/cache/*
 .elasticbeanstalk/
-bower_components/
-node_modules/
 app/
+bower_components/
 public/
+node_modules/

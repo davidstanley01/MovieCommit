@@ -18,7 +18,11 @@ return array(
         'Cars',
         'PulpFiction',
         'GodFather',
+<<<<<<< HEAD
         'RockyBalboa'
+=======
+        'Scarface'
+>>>>>>> dev
     ),
 
 );
