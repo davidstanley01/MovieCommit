@@ -1,5 +1,7 @@
 <?php namespace MovieCommit;
 
+use MovieCommit\MovieDataInterface;
+
 class MovieCommit
 {
     /**
@@ -37,12 +39,15 @@ class MovieCommit
         "permalink" => null
     ];
 
+    protected $db;
+
     /**
      * Class Constructor
      * @param array $movies The array of movies we have from which to choose
      */
-    public function __construct(array $movies)
+    public function __construct(array $movies, MovieDataInterface $db)
     {
+        $this->db = $db;
         $this->movies = $movies;
         $this->path = __DIR__ .'/data/';    // set the file path - feels durty
         $this->line = $this->getQuote();     // make the line available

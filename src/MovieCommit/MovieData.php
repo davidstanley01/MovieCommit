@@ -1,6 +1,8 @@
 <?php namespace MovieCommit;
 
-class MovieData
+use MovieCommit\MovieDataInterface;
+
+class MovieData implements MovieDataInterface
 {
     public function __construct(array $connection)
     {
@@ -11,6 +13,26 @@ class MovieData
         $dsn = "mysql:host=$host;dbname=$dbname";
 
         // parent::__construct($dsn, $username, $password, array());
+    }
+
+    public function getAllMovies()
+    {
+        return true;
+    }
+
+    public function getMovie()
+    {
+        return true;
+    }
+
+    public function getLine()
+    {
+
+    }
+
+    public function getLineById($id)
+    {
+
     }
 
 }

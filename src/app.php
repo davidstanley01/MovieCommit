@@ -19,10 +19,10 @@ $app = new Slim($config);
 // Simple DI
 $app->db = function() use ($config) {
     return new MovieData($config['database']);
-}
+};
 
-$app->data = function() use ($config) {
-    return new MovieCommit($config['movies']);
+$app->data = function() use ($config, $app) {
+    return new MovieCommit($config['movies'], $app->db);
 };
 
 // Set up views
@@ -67,3 +67,7 @@ $app->get('/(:id)', function($id = null) use ($app, $env) {
     );
 
 });
+
+// api stuffs to come...
+$app->get('/movies', function() use ($app, $env) {});
+$app->get('/movies/(:id)', function($id = null) use ($app, $env) {});
