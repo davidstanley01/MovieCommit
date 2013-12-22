@@ -25,6 +25,7 @@
             blockquote {text-align:left; border-left:3px solid #ddd;padding:1.2em 2.4em;width:60%;display:inline-block;background-color:#efefef;margin:0;max-width:400px;}
             blockquote p { font-size:1.6em;}
             .title {margin-bottom:16px;display:block; text-align:right;color:#aaa;font-size:1em; font-style: italic;}
+            .title a {display:inline; color:#aaa;font-size:0.8em;}
             .fixed-bottom {position:absolute;bottom:0;}
             footer {min-height:8em;width:100%;box-sizing: border-box;}
             a.highlight {color:#333;background-color:#eee;border-bottom:1px solid #ccc; padding:2px 5px;text-decoration:none;}
@@ -54,7 +55,9 @@
                 <div class="main">
                     <blockquote id="quote">
                         <p>{{ line }}</p>
-                        <span class="title">&mdash; {{ title }} <a href="{{ permalink }}" title="Permalink">#</a></span>
+                        <span class="title">&mdash; {{ title }} <br />
+                            <a href="/{{ permalink }}" title="Permalink">Permalink</a>,
+                            <a href="/clean/{{ permalink }}" title="Clean Permalink">Clean Permalink</a></span>
                     </blockquote>
                 </div>
             </div>
