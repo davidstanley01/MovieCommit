@@ -4,6 +4,7 @@ use Slim\Slim;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 use MovieCommit\MovieCommit;
+use MovieCommit\MovieData;
 
 // Load Configs
 $env = (getenv('APP_ENV') ?: 'dev');
@@ -16,6 +17,10 @@ $config = array_merge($defaultConfig, $envConfig);
 $app = new Slim($config);
 
 // Simple DI
+$app->db = function() use ($config) {
+    return new MovieData($config['database']);
+}
+
 $app->data = function() use ($config) {
     return new MovieCommit($config['movies']);
 };
