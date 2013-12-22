@@ -27,21 +27,30 @@ $app->view->parserExtensions = array(new TwigExtension());
 
 // just the facts, ma'am
 $app->get('/clean', function() use ($app) {
-    $quote = $app->data->line;
 
+    $quote = $app->data->getQuote();
     echo $quote['line'] .' - '. $quote['title'];
+
+});
+
+// just the facts, ma'am, with a permalink
+$app->get('/clean/(:id)', function($id = null) use ($app) {
+
+    $quote = $app->data->getQuoteById($id);
+    echo $quote['line'] .' - '. $quote['title'];
+
 });
 
 // Is it route (r-oww-te) or route (root)?
 // default route
 $app->get('/(:id)', function($id = null) use ($app, $env) {
 
-    // get the line
-    if ($id) {
-        $quote = $app->data->getSpecificLine($id);
+    if (is_null($id)) {
+        $quote = $app->data->getQuote();
     } else {
-        $quote = $app->data->line;
+        $quote = $app->data->getQuoteById($id);
     }
+
     $app->render(
         'default.html',
         array(
