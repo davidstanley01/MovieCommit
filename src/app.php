@@ -6,7 +6,7 @@ use Slim\Views\TwigExtension;
 use MovieCommit\MovieCommit;
 
 // Load Configs
-$env = (getenv('APP_ENV') ?: 'prod');
+$env = (getenv('APP_ENV') ?: 'dev');
 $defaultConfig = require "config/config.php";
 $envConfig = require "config/$env.php";
 
