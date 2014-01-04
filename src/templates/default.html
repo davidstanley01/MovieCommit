@@ -42,10 +42,10 @@
         <div class="nav">
             <div class="wrap">
                 <ul class="project left">
-                    <li><a href="/">MovieCommit</a></li>
+                    <li><a href="{{ baseUrl() }}">MovieCommit</a></li>
                 </ul>
                 <ul class="project right">
-                    <li><a href="/clean">Just the text...</a></li>
+                    <li><a href="{{ baseUrl() }}/clean">Just the text...</a></li>
                 </ul>
                 <div class="clear"></div>
             </div>
@@ -56,8 +56,8 @@
                     <blockquote id="quote">
                         <p>{{ line }}</p>
                         <span class="title">&mdash; {{ title }} <br />
-                            <a href="/{{ permalink }}" title="Permalink">Permalink</a>,
-                            <a href="/clean/{{ permalink }}" title="Clean Permalink">Clean Permalink</a></span>
+                            <a href="{{ baseUrl() }}/{{ permalink }}" title="Permalink">Permalink</a>,
+                            <a href="{{ baseUrl() }}/clean/{{ permalink }}" title="Clean Permalink">Clean Permalink</a></span>
                     </blockquote>
                 </div>
             </div>
@@ -66,7 +66,7 @@
             <div class="wrap">
                 <ul class="footerTitle">
                     <li>Made with <a href="http://www.slimframework.com/" class="highlight">Slim</a>, caffeine, and a touch of bitterness. <a href="https://github.com/davidstanley01/MovieCommit" class="highlight">Fork it on Github</a></li>
-                    <li>Special thanks to <a href="https://twitter.com/dilbert4life" class="highlight">Don Gilbert</a> for quotes and validation</li>
+                    <li>Special thanks to <a href="https://twitter.com/dilbert4life" class="highlight">Don Gilbert</a> for quotes, validation and permalinks</li>
                     <li>Inspired by <a href="http://whatthecommit.com" class="highlight">WhatTheCommit</a></li>
                     <li>&copy; {{ "now"|date("Y") }} <a href="http://davidstanley.org" class="highlight">David Stanley</a></li>
                 </ul>
