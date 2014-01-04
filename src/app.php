@@ -4,6 +4,7 @@ use Slim\Slim;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 use MovieCommit\MovieCommit;
+use MovieCommit\Tracking;
 
 // Load Configs
 $env = (getenv('APP_ENV') ?: 'dev');
@@ -20,6 +21,11 @@ $app->data = function() use ($config) {
     return new MovieCommit($config['movies']);
 };
 
+// Server-side analytics
+$app->tracking = function() use ($env) {
+    return new Tracking($env);
+};
+
 // Set up views
 $app->view(new Twig());
 $app->view->parserOptions = $config['templates.parserOptions'];
@@ -29,6 +35,8 @@ $app->view->parserExtensions = array(new TwigExtension());
 $app->get('/clean', function() use ($app) {
 
     $quote = $app->data->getQuote();
+    $app->tracking->setPageView('clean', $quote['title']);
+    $app->tracking->send();
     echo $quote['line'] .' - '. $quote['title'];
 
 });
@@ -37,6 +45,8 @@ $app->get('/clean', function() use ($app) {
 $app->get('/clean/(:id)', function($id = null) use ($app) {
 
     $quote = $app->data->getQuoteById($id);
+    $app->tracking->setPageView('clean-permalink', $quote['title']);
+    $app->tracking->send();
     echo $quote['line'] .' - '. $quote['title'];
 
 });
