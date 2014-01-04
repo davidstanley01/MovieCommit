@@ -45,20 +45,17 @@ $app->get('/clean/(:id)', function($id = null) use ($app) {
 // default route
 $app->get('/(:id)', function($id = null) use ($app, $env) {
 
-    if (is_null($id)) {
-        $quote = $app->data->getQuote();
-    } else {
-        $quote = $app->data->getQuoteById($id);
-    }
+    // branch off id being null or not
+    $quote = (is_null($id)) ? $app->data->getQuote() : $app->data->getQuoteById($id);
 
     $app->render(
         'default.html',
-        array(
+        [
             'env'   => $env,
             'line'  => $quote['line'],
             'title' => $quote['title'],
             'permalink' => $quote['permalink']
-        )
+        ]
     );
 
 });
