@@ -19,7 +19,8 @@ return array(
         'PulpFiction',
         'GodFather',
         'RockyBalboa',
-        'Scarface'
+        'Scarface',
+        'Anchorman'
     ),
 
 );
