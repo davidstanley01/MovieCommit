@@ -1,6 +1,6 @@
 Movie Commit
 ============================
-
+[![Build Status](https://travis-ci.org/davidstanley01/MovieCommit.png?branch=master)](https://travis-ci.org/davidstanley01/MovieCommit)
 This is a simple website to give you a random movie quote, suitable for git commit message.
 
 There are two routes - / and /clean.
