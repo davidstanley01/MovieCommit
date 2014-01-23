@@ -91,4 +91,127 @@ class MovieCommitTest extends \BaseTest
         $movie = $this->invokeMethod($movieMock, 'getLine', array($movieName));
         $this->assertEquals($movie, $default, 'Picked the wrong week to quit sniffing glue');
     }
+
+    /**
+     * @test
+     */
+    public function testGetQuote()
+    {
+        $movieMock = $this->getMockBuilder('MovieCommit\MovieCommit')
+            ->disableOriginalConstructor()
+            ->setMethods(array('getMovie', 'getLine'))
+            ->getMock();
+        $movieMock->expects($this->once())
+            ->method('getMovie')
+            ->will($this->returnValue('asdf'));
+        $movieMock->expects($this->once())
+            ->method('getLine')
+            ->with($this->equalTo('asdf'))
+            ->will($this->returnValue('returnValue'));
+
+        $quote = $movieMock->getQuote();
+        $this->assertEquals('returnValue', $quote);
+    }
+
+    /**
+     * @test
+     */
+    public function testGetQuoteByIdWithValidId()
+    {
+        $movieName = 'HolyGrail';
+        $lineNumber = 1;
+        $permalink = base64_encode(json_encode([$movieName, $lineNumber]));
+        $default = [
+            'line'  => 'The nights who say, "ni!".',
+            'title' => 'Holy Grail',
+            'permalink' => $permalink
+        ];
+
+        $movieMock = $this->getMockBuilder('MovieCommit\MovieCommit')
+            ->disableOriginalConstructor()
+            ->setMethods(array('getLineByNumber'))
+            ->getMock();
+        $movieMock->expects($this->once())
+            ->method('getLineByNumber')
+            ->with($this->equalTo($movieName),
+                   $this->equalTo($lineNumber))
+            ->will($this->returnValue($default));
+
+        $result = $movieMock->getQuoteById($permalink);
+        $this->assertEquals($default, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function testGetQuoteByIdWithInvalidId()
+    {
+        $movieName = 'HolyGrail';
+        $lineNumber = 1;
+        $permalink = 'asdf';
+        $default = [
+            "line"  => "Dave's not here, man.",
+            "title" => "The Big Lebowski",
+            "permalink" => null
+        ];
+
+        $movieMock = $this->getMockBuilder('MovieCommit\MovieCommit')
+            ->disableOriginalConstructor()
+            ->setMethods(array('getLineByNumber'))
+            ->getMock();
+        $movieMock->expects($this->never())
+            ->method('getLineByNumber');
+        $this->setAttribute($movieMock, 'default', $default);
+
+        $result = $movieMock->getQuoteById($permalink);
+        $this->assertEquals($default, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function testGetMovie()
+    {
+        $movies = array(
+            'HolyGrail'
+        );
+        $movieMock = $this->getMockBuilder('MovieCommit\MovieCommit')
+            ->disableOriginalConstructor()
+            ->setMethods(array())
+            ->getMock();
+        $this->setAttribute($movieMock, 'movies', $movies);
+        $result = $this->invokeMethod($movieMock, 'getMovie');
+
+        $this->assertEquals('HolyGrail', $result);
+    }
+
+    /**
+     * @test
+     */
+    public function testFormatResponseArray()
+    {
+        $lines = [
+            'A Test Movie',
+            'The first line'
+        ];
+        $lineNumber = 0;
+        $movieName = 'test';
+
+        $expected = [
+            'line' => 'The first line',
+            'title' => 'A Test Movie',
+            'permalink' => base64_encode(json_encode([$movieName, $lineNumber]))
+        ];
+        $movieMock = $this->getMockBuilder('MovieCommit\MovieCommit')
+            ->disableOriginalConstructor()
+            ->setMethods(array())
+            ->getMock();
+        $result = $this->invokeMethod(
+            $movieMock,
+            'formatResponseArray',
+            array($lines, $lineNumber, $movieName)
+        );
+
+        $this->assertEquals($expected, $result);
+    }
 }

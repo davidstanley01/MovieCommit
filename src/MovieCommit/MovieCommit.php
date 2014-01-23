@@ -54,9 +54,8 @@ class MovieCommit
      * @param  string $id The id of the quote to retrieve
      * @return string     The movie line
      */
-    public function getQuote($id = null)
+    public function getQuote()
     {
-        // with no id, do the random thing...
         $movie = $this->getMovie();
         return $this->getLine($movie);
     }
@@ -73,10 +72,8 @@ class MovieCommit
         $movie = json_decode(base64_decode($id), true);
 
         if ($movie) {
-
             list($movieName, $line) = $movie;
             return $this->getLineByNumber($movieName, $line);
-
         } else {
             return $this->default;
         }
