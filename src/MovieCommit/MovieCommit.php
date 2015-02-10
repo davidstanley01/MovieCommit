@@ -4,24 +4,28 @@ class MovieCommit
 {
     /**
      * Holds our line
+     * 
      * @var string
      */
     public $line;
 
     /**
      * Holds the path to our file
+     * 
      * @var string
      */
     public $path;
 
     /**
      * Array containing our movies
+     * 
      * @var array
      */
     protected $movies;
 
     /**
      * Number of movies to select from
+     * 
      * @var int
      */
     protected $movieCount;
@@ -39,6 +43,7 @@ class MovieCommit
 
     /**
      * Class Constructor
+     * 
      * @param array $movies The array of movies we have from which to choose
      */
     public function __construct(array $movies)
@@ -90,7 +95,8 @@ class MovieCommit
         $movie = (count($this->movies) == 1) ? 0 : rand(1, count($this->movies)) - 1;
 
         // What is our movie?
-        return $this->movies[$movie];
+        // return $this->movies[$movie];
+        return 'PulpFiction';
     }
 
     /**
@@ -101,12 +107,20 @@ class MovieCommit
      */
     protected function getLine($movieName)
     {
-        // get the array of lines
+        // get the array of lines and pop off the title
         $lines = $this->loadData($movieName);
 
         // If we have lines...
         if ($lines) {
-            $lineNumber = (count($lines) == 1) ? 0 : rand(1, count($lines)) - 1;
+            // If we only have one line then return 0. This will give us the 
+            // title (on the first line of each file).
+            // If we have more, though, then get a number between 1 and the
+            // length of the array - 1. This offsets the title as the first 
+            // line of the array and the accounts for the 0 index on the array
+            $totalLines = count($lines);
+            $index = rand(1, $totalLines) - 1;
+            $lineNumber = ($totalLines === 1) ? 0 : $index;
+
             return $this->formatResponseArray($lines, $lineNumber, $movieName);
         } else {
             // something.  anything
@@ -161,8 +175,6 @@ class MovieCommit
     {
         // The first line of the file is the movie title.  Grab it and get rid of it.
         $title = $lines[0];
-        unset($lines[0]);
-        $lines = array_values($lines);
 
         // return the obvious
         return array(
