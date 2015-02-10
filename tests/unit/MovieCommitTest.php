@@ -194,7 +194,7 @@ class MovieCommitTest extends \BaseTest
             'A Test Movie',
             'The first line'
         ];
-        $lineNumber = 0;
+        $lineNumber = 1;
         $movieName = 'test';
 
         $expected = [

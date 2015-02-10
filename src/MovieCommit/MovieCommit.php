@@ -95,8 +95,7 @@ class MovieCommit
         $movie = (count($this->movies) == 1) ? 0 : rand(1, count($this->movies)) - 1;
 
         // What is our movie?
-        // return $this->movies[$movie];
-        return 'PulpFiction';
+        return $this->movies[$movie];
     }
 
     /**
